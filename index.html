@@ -26,6 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //Meta tag Keywords -->
 
 	<!-- Custom-Files -->
+	<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<!-- Bootstrap-Core-CSS -->
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
@@ -273,16 +274,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<!-- news -->
 	<div class="news-agile bg-cream py-5" id="news">
-		<div class="container py-xl-5 py-lg-3">
+		<div class="container">
 			<div class="row">
 				<!-- order form -->
-				<div class="col-lg-4 order-form-w3ls pl-lg-0" id="order">
+				<div class="order-form-w3ls pl-lg-0" id="order">
 					<div class="agile_its_registration bg-white">
 						<h3 class="title-2 mb-3">Order a Cake</h3>
 						<p class="mb-4">Please provide below details for your cake order.</p>
+
+
 						<form action="#" method="post">
-							<div class="agileits-location form-group">
-								<label>Shape</label>
+							<div class="agileits-location">
+								<label>shape</label>
 								<select required>
 									<option value="">Round</option>
 									<option value="1">rectangle</option>
@@ -291,8 +294,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</select>
 								<div class="clear"></div>
 							</div>
-							<div class="agileits-location w3ls-1 form-group">
-								<label>Levels</label>
+							<div class="agileits-location w3ls-1">
+								<label>levels</label>
 								<select required>
 									<option value="">1</option>
 									<option value="1">2</option>
@@ -301,28 +304,53 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</select>
 								<div class="clear"></div>
 							</div>
-							<div class="agileits-location form-group">
-								<label>Size</label>
+							<div class="agileits-location">
+								<label>size</label>
 								<select required>
 									<option value="">4 inch</option>
-									<option value="">6 inch</option>
-									<option value="">8 inch</option>
-									<option value="">10 inch</option>
+									<option value="1">6 inch</option>
+									<option value="2">8 inch</option>
+									<option value="2">10 inch</option>
 								</select>
 								<div class="clear"></div>
 							</div>
-							<div class="agileits-location w3ls-1 form-group">
-								<label>Flavor</label>
+							<div class="agileits-location w3ls-1">
+								<label>flavor</label>
 								<select required>
-									<option value="">Chocolate</option>
-									<option value="">Butterscotch </option>
-									<option value="">Strawberry</option>
-									<option value="">Vanilla</option>
+									<option value="">strawberry</option>
+									<option value="1">vanila</option>
+									<option value="2">chocolate</option>
+									<option value="2">red velvet</option>
 								</select>
 								<div class="clear"></div>
 							</div>
-							<input type="submit" value="Order" class="agileinfo-order btn" />
-						</form>
+							<div class="clear"></div>
+						</form>	
+						<div id="parentHorizontalTab_agile">
+							<ul class="resp-tabs-list hor_1">
+								<li>pickup</li>
+								<li>delivery</li>
+							</ul>
+							<div class="resp-tabs-container hor_1">
+							   <div class="agile_its_registration">
+									<form action="#" method="post" class="agile_form">
+									  <input type="text" name="username" placeholder="Your name" required="required" />	<br>
+									  <input type="email" name="username" placeholder="Your email" required="required" /><br>
+									  <input type="text" name="username" placeholder="Phone number"  required="required" /><br>
+									  <input type="submit" value="order" class="agileinfo" /><br>
+									</form>	
+								</div>
+								<div class="agile_its_registration">
+									<form action="#" method="post" class="agile_form">
+									  <input type="text" name="username" placeholder="Your name" required="required" />	<br>
+									  <input type="email" name="username" placeholder="Your email" required="required" /><br>
+									  <input type="text" name="username" placeholder="Phone number"  required="required" /><br>
+									  <textarea id="message" name="message" placeholder="Address"></textarea><br>
+									  <input type="submit" value="order" class="agileinfo" /><br>
+									</form>	
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- //order form -->
@@ -566,9 +594,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<script src="js/bootstrap.js"></script>
 	<!-- Necessary-JavaScript-File-For-Bootstrap -->
-
+	<script src="js/easyResponsiveTabs.js"></script>
 	<!-- //Js files -->
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//Horizontal Tab
+			$('#parentHorizontalTab_agile').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion
+				width: 'auto', //auto or any width like 600px
+				fit: true, // 100% fit in a container
+				tabidentify: 'hor_1', // The tab groups identifier
+				activate: function(event) { // Callback function if tab is switched
+					var $tab = $(this);
+					var $info = $('#nested-tabInfo');
+					var $name = $('span', $info);
+					$name.text($tab.text());
+					$info.show();
+				}
+			});
+		});
+		</script>
 </body>
 
 </html>
